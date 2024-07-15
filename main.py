@@ -94,8 +94,7 @@ class LLMStreamlitUI:
                     text_splitter = CharacterTextSplitter()
                     texts = text_splitter.split_text(txt_input)
                     docs = [Document(page_content=t) for t in texts]
-                    print("TEXT:: ", texts)
-
+                    
                     # Load the LLM model
                     llm_model = LLMModel(model_provider=option_model_provider)
                     llm = llm_model.load(api_key=api_key)
@@ -105,8 +104,7 @@ class LLMStreamlitUI:
                         chain_type="map_reduce"
                     )
                     summary_output = chain.invoke(docs)
-                    print(summary_output)
-
+                    
                     result.append(summary_output)
                     del api_key
             
